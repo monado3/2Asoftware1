@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0083)http://www.kijineko.co.jp/tech/superstitions/buffer-overrun-of-scanf.html#comment-9 -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>[迷信] scanf ではバッファオーバーランを防げない | 株式会社きじねこ</title>
+  
+<meta name="copyright" content="Copyright (C) 2005-2009 by Kijineko Inc.">
+<meta name="description" content="これも根が深い迷信です。この迷信を根拠に、scanf は使うべきではないという人も大勢います。おそらくこういうことでしょう。">
+<meta name="keywords" content="C,C++,組込みプログラム,システム,アプリ,ソフト,SE,プログラマ,プログラム,プログラミング">
+<meta name="robots" content="index,follow">
+<link rel="prev" href="http://www.kijineko.co.jp/tech/superstitions/return-null-if-new-failed.html">
+
+<link rel="up" href="http://www.kijineko.co.jp/tech/superstitions">
+
+<link rel="next" href="http://www.kijineko.co.jp/tech/superstitions/input-from-keyboard-by-scanf.html">
+
+  <link type="text/css" rel="stylesheet" media="all" href="./[迷信] scanf ではバッファオーバーランを防げない _ 株式会社きじねこ_files/book.css">
+<link type="text/css" rel="stylesheet" media="all" href="./[迷信] scanf ではバッファオーバーランを防げない _ 株式会社きじねこ_files/node.css">
+<link type="text/css" rel="stylesheet" media="all" href="./[迷信] scanf ではバッファオーバーランを防げない _ 株式会社きじねこ_files/defaults.css">
+<link type="text/css" rel="stylesheet" media="all" href="./[迷信] scanf ではバッファオーバーランを防げない _ 株式会社きじねこ_files/system.css">
+<link type="text/css" rel="stylesheet" media="all" href="./[迷信] scanf ではバッファオーバーランを防げない _ 株式会社きじねこ_files/system-menus.css">
+<link type="text/css" rel="stylesheet" media="all" href="./[迷信] scanf ではバッファオーバーランを防げない _ 株式会社きじねこ_files/user.css">
+<link type="text/css" rel="stylesheet" media="all" href="./[迷信] scanf ではバッファオーバーランを防げない _ 株式会社きじねこ_files/layout-fixed.css">
+<link type="text/css" rel="stylesheet" media="all" href="./[迷信] scanf ではバッファオーバーランを防げない _ 株式会社きじねこ_files/kijineko.css">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css">
+:root #header + #content > #left > #rlblock_left,
+:root #content > #center > .dose > .dosesingle,
+:root #content > #right > .dose > .dosesingle
+{ display: none !important; }</style></head>
+
+<body class="not-front not-logged-in page-node node-type-book one-sidebar sidebar-left">
+
+  <div id="page"><div id="page-inner">
+    <a name="top" id="navigation-top"></a>
+
+    <div id="header"><div id="header-inner" class="clear-block">
+
+      
+              <div id="header-blocks" class="region region-header">
+          <div id="block-block-3" class="block block-block">
+
+  <div class="content">
+       </div>
+</div>
+<div id="block-block-26" class="block block-block">
+
+  <div class="content">
+    <strong id="pr">株式会社きじねこは大阪のソフトウェア開発会社です。組込み系・業務系のプログラム開発から電子回路の設計までおまかせください。</strong><img src="./[迷信] scanf ではバッファオーバーランを防げない _ 株式会社きじねこ_files/contents_bar.gif" class="header-bar" width="906" height="57" usemap="#Map" alt=""><map name="Map" id="Map"><area shape="rect" coords="18,0,259,57" href="http://www.kijineko.co.jp/" alt="software engineering きじねこ"><area shape="rect" coords="677,5,887,52" href="http://www.kijineko.co.jp/contact" alt="お問い合わせはこちら" title="大阪・京都・神戸など近畿圏を中心に全国からのお問い合わせをお待ちしています。"></map><div class="address"><span title="大阪市営地下鉄 本町駅24番出口より徒歩約1分">〒541-0052　大阪市中央区安土町 1-7-20 新トヤマビル2F</span></div>  </div>
+</div>
+        </div> <!-- /#header-blocks -->
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+                  <div id="content-top" class="region region-content_top">
+            <div id="block-block-58" class="block block-block">
+
+  <div class="content">
+    <div style="padding: 8px; margin-bottom: 3px">
+<!-- ▼ここから テキスト広告 ビジネス情報▼ -->
+<a href="http://sbiz.jp/ag/u/?af=ag00159">
+副業・独立起業のためのアイデアビジネス情報</a>
+<!-- ▲ここまで テキスト広告 ビジネス情報▲ -->
+</div>
+  </div>
+</div>
+<div id="block-block-31" class="block block-block">
+
+  <div class="content">
+    <p>
+</p>
+<script type="text/javascript">
+google_ad_client = "pub-5881006918846859";
+google_ad_width = 468;
+google_ad_height = 15;
+google_ad_format = "468x15_0ads_al";
+//2007-05-21: kijineko
+google_ad_channel = "0217541646";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "3B617F";
+google_color_text = "17163B";
+google_color_url = "3F499F";
+</script><script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<p></p>
+  </div>
+</div>
+          </div> <!-- /#content-top -->
+        
+                  <div id="content-header">
+            <div class="breadcrumb"><a href="http://www.kijineko.co.jp/">ホーム</a> » <a href="http://www.kijineko.co.jp/tech">技術情報</a> » <a href="http://www.kijineko.co.jp/tech/superstitions">C/C++迷信集</a></div>                          <h1 class="title">[迷信] scanf ではバッファオーバーランを防げない</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div id="node-80" class="node clear-block">
+
+
+
+  <div class="meta">
+  
+      <div class="terms terms-inline"><ul class="links inline"><li class="taxonomy_term_1 first"><a href="http://www.kijineko.co.jp/taxonomy/term/1" rel="tag" title="">C</a></li>
+<li class="taxonomy_term_2 last"><a href="http://www.kijineko.co.jp/taxonomy/term/2" rel="tag" title="">C++</a></li>
+</ul></div>
+    </div>
+
+  <div class="content">
+    <p>
+これも根が深い迷信です。この迷信を根拠に、scanf は使うべきではないという人も大勢います。おそらくこういうことでしょう。
+</p>
+<pre><font color="#0000ff">char</font> s[<font color="#ff0000">10</font>];
+scanf(<font color="#ff0000">"%s"</font>, s);
+</pre><p>
+確かにこれでは、ユーザーが10文字以上入力した時点で未定義の動作を引き起こしてしまいます。しかし、これは書式指定が不適切なために発生する脆弱性であって、scanf の問題ではありません。
+</p>
+<p>
+バッファオーバーランを回避するには次のようにします。
+</p>
+<pre><font color="#0000ff">char</font> s[<font color="#ff0000">10</font>];
+scanf(<font color="#ff0000">"%9s"</font>, s);
+</pre><p>
+これで差し当たっての問題はなくなりました。
+</p>
+<p>
+さて、熱心な迷信の信者は、何とかして scanf の名誉回復を阻むために、巧みに論点のすり替えを行いながら、scanf を貶めようとすることでしょう。
+</p>
+<p>
+例えば、上記のように文字列を読み込めばバッファオーバーランは防げるかもしれないが、格納されなかった文字、あるいは改行文字がバッファに残ってしまい、後で悪さをすると。
+</p>
+<p>
+そんな場合は、こうすれば解決します。
+</p>
+<pre><font color="#0000ff">char</font> s[<font color="#ff0000">10</font>];
+scanf(<font color="#ff0000">"%9s%*[^\n]%*c"</font>, s);
+</pre><p>
+<font color="red"><em>※ 注意! ここはやや誤解を与える表現になっていました。<a href="http://www.kijineko.co.jp/tech/superstitions/buffer-overrun-of-scanf.html#comment-9">コメント</a>を参照してください。</em></font>
+</p>
+<p>
+scanf 系の関数は、文字列を読み込むことに限れば、fgets なんかよりずっと柔軟な処理ができます。要は、書式指定を完全に把握する気があるかどうかの問題です。
+</p>
+<p>
+ところで、先ほど「文字列を読み込むことに限れば」と敢えて書きました。というのも、文字列を読み込む以外、例えば整数や実浮動小数点数を読み込む場合、scanf 系関数には意外に知られていない問題点があるからです。これは、fscanf でも sscanf でも同じことがいえます。
+</p>
+<p>
+scanf 系の関数では、整数や実浮動小数点数を読み込む際に、オーバーフローやアンダーフローが発生しても検知することができません。実引数で指定した格納先の型で、入力した数値を表現できない場合の動作は未定義なのです。
+</p>
+<p>
+scanf でバッファオーバーランを防げないと盲信している人は、数値の入力には脊椎反射的に fgets と sscanf で置き換えるという選択をすることが少なくありません。しかし、先に書いたような問題があるため、そうした方法は安全ではありません。ですから、
+</p>
+<pre><font color="#0000ff">char</font> s[<font color="#ff0000">100</font>];
+<font color="#0000ff">int</font> x;
+
+<font color="#000080">fgets</font>(s, <font color="#ff0000">100</font>, <font color="#008080">stdin</font>);
+<font color="#0000ff">if</font> (sscanf(<font color="#ff0000">"%d"</font>, &amp;x) &lt; <font color="#ff0000">1</font>)
+{
+  <font color="#008000">/* エラー処理 */</font>
+}
+</pre><p>
+ではなく
+</p>
+<pre><font color="#0000ff">char</font> s[<font color="#ff0000">100</font>];
+<font color="#0000ff">long</font> t;
+<font color="#0000ff">int</font> x;
+<font color="#0000ff">char</font> *endptr;
+
+<font color="#000080">fgets</font>(s, <font color="#ff0000">100</font>, <font color="#008080">stdin</font>);
+errno = <font color="#ff0000">0</font>;
+t = strtol(s, &amp;endptr, <font color="#ff0000">10</font>);
+<font color="#0000ff">if</font> (errno != <font color="#ff0000">0</font> || *endptr != <font color="#ff4000">'\n'</font> || (t &lt; INT_MIN || INT_MAX &lt; t))
+{
+  <font color="#008000">/* エラー処理 */</font>
+}
+x = t;
+</pre><p>
+とした方がよいのです。
+</p>
+<p>
+最後の方は、かなり横道にそれてしまいましたが、<code>scanf</code> 系関数に関連することですのでご容赦ください。<br>
+バッファオーバーランに関しては、IPA の<a href="http://www.ipa.go.jp/security/awareness/vendor/programming/b06_01.html" target="_blank">セキュア・プログラミング講座の記事</a>も参考にしてください。
+</p>
+  <div id="book-navigation-22" class="book-navigation">
+    
+        <div class="page-links clear-block">
+              <a href="http://www.kijineko.co.jp/tech/superstitions/return-null-if-new-failed.html" class="page-previous" title="前のページへ">‹ [迷信] new に失敗すると NULL が返る。</a>
+                    <a href="http://www.kijineko.co.jp/tech/superstitions" class="page-up" title="１階層上位のページへ">↑ 上位</a>
+                    <a href="http://www.kijineko.co.jp/tech/superstitions/input-from-keyboard-by-scanf.html" class="page-next" title="次のページへ">[迷信] scanf でキーボードから入力 ›</a>
+          </div>
+    
+  </div>
+  </div>
+
+  </div>        </div>
+
+        
+                  <div id="content-bottom" class="region region-content_bottom">
+            <div id="block-block-46" class="block block-block">
+
+  <div class="content">
+    <div style="margin-left:5px">
+<a href="http://b.hatena.ne.jp/entry/http://www.kijineko.co.jp/tech/superstitions/buffer-overrun-of-scanf.html"><img src="./[迷信] scanf ではバッファオーバーランを防げない _ 株式会社きじねこ_files/b_entry.gif" width="16" height="12" style="border: none;" alt="このエントリーを含むはてなブックマーク" title="このエントリーを含むはてなブックマーク"></a>
+</div>  </div>
+</div>
+<div id="block-block-41" class="block block-block">
+
+  <div class="content">
+    <div style="margin-left: 5px; margin-top: 10px; font-size: 75%; color: gray;">
+[PR] <a href="http://shoes.sellover.net/" target="_blank">靴</a>　<a href="http://seo.kijineko.com/" target="_blank">SEO</a>　<a href="http://store.sellover.net/" target="_blank">生活雑貨</a>　<a href="http://www.moshimo.com/top/244901/" target="_blank">通販</a>　<a href="http://astore.amazon.co.jp/kijineko-22" target="_blank">書籍紹介</a>　<a href="http://www.kijineko-software.com/" target="_blank">格安ソフトウェア制作</a>　<a href="http://www.kijineko.jp/" target="_blank">回路設計</a>　<a href="http://www.artbain.biz/" target="_blank">クロス張替え</a><br>
+[PR] <a href="http://rpx.a8.net/svt/ejp?a8mat=1U7G76+4POK6Q+2HOM+6B70I&amp;rakuten=y&amp;a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2F0ea62065.34400275.0ea62066.204f04c0%2Fa05061068436_1U7G76_4POK6Q_2HOM_6B70I" target="_blank">楽天市場</a><img border="0" width="1" height="1" src="http://www18.a8.net/0.gif?a8mat=1U7G76+4POK6Q+2HOM+6B70I" alt="" hidden="" style="display: none !important;">　<a href="http://www.kijineko.co.jp/ad">広告募集</a>
+</div>
+  </div>
+</div>
+          </div> <!-- /#content-bottom -->
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-89 first"><a href="http://www.kijineko.co.jp/company.html">会社案内</a></li>
+<li class="menu-90"><a href="http://www.kijineko.co.jp/services">サービス内容</a></li>
+<li class="menu-91"><a href="http://www.kijineko.co.jp/works" title="">業務実績</a></li>
+<li class="menu-405"><a href="http://www.kijineko.co.jp/faq" title="">よくある質問</a></li>
+<li class="menu-99"><a href="http://www.kijineko.co.jp/tech">技術情報</a></li>
+<li class="menu-506"><a href="http://www.kijineko.co.jp/support" title="">サポート情報</a></li>
+<li class="menu-373 last"><a href="http://www.kijineko.co.jp/contact" title="">お問い合わせ</a></li>
+</ul>            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+              <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <div id="block-book-0" class="block block-book">
+  <h2>ブックナビゲーション</h2>
+
+  <div class="content">
+    <div id="book-block-menu-265" class="book-block-menu">
+  <ul class="menu"><li class="collapsed last"><a href="http://www.kijineko.co.jp/faq">よくある質問</a></li>
+</ul></div>
+<div id="book-block-menu-464" class="book-block-menu">
+  <ul class="menu"><li class="collapsed last"><a href="http://www.kijineko.co.jp/lab">実験室</a></li>
+</ul></div>
+<div id="book-block-menu-22" class="book-block-menu">
+  <ul class="menu"><li class="expanded last active-trail"><a href="http://www.kijineko.co.jp/tech">技術情報</a><ul class="menu"><li class="collapsed first"><a href="http://www.kijineko.co.jp/tech/boost-memo">Boost C++ Libraries メモ</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/cppemb">C++と組込み環境</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/cppsamples">C++サンプル集</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/cpptempls">C++テンプレート集</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/cpp2c">C++プログラマのためのC言語入門</a></li>
+<li class="expanded active-trail"><a href="http://www.kijineko.co.jp/tech/superstitions">C/C++迷信集</a><ul class="menu"><li class="leaf first"><a href="http://www.kijineko.co.jp/tech/superstitions/A-to-Z-is-sequence.html">[迷信] 'A'～'Z' の値は連続している</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/0xe-0xe-is-zero.html">[迷信] 0xe-0xe はゼロ</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/1-byte-is-8-bits.html">[迷信] 1 バイトは 8 ビット</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/division-by-pow2-is-shift-right.html">[迷信] 2の累乗による割り算と右シフトは等価</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/FILE-type-is-structure.html">[迷信] FILE 型は構造体</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/abs-returns-not-negative.html">[迷信] abs は常に非負の値を返す</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/argv0-is-program-name.html">[迷信] argv[0] はプログラム名</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/char-is-signed.html">[迷信] char 型は符号付き</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/printf-format-for-double.html">[迷信] double の出力書式は "%lf"</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/fflush-with-input-stream.html">[迷信] fflush で入力バッファをクリア</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/open-memory-by-free.html">[迷信] free でメモリを開放する</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/crash-when-free-is-called-with-null.html">[迷信] free に NULL を渡すとクラッシュする</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/gets-can-be-replaced-with-fgets-simply.html">[迷信] gets は単純に fgets に置き換えられる</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/parameter-of-isalpha-is-char.html">[迷信] isalpha 関数の引数は char 型</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/return-null-if-new-failed.html">[迷信] new に失敗すると NULL が返る。</a></li>
+<li class="leaf active-trail"><a href="http://www.kijineko.co.jp/tech/superstitions/buffer-overrun-of-scanf.html" class="active">[迷信] scanf ではバッファオーバーランを防げない</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/input-from-keyboard-by-scanf.html">[迷信] scanf でキーボードから入力</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/return-value-of-setjmp.html">[迷信] setjmp マクロの返却値は変数に代入できる</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/sizeof-is-constant-expression.html">[迷信] sizeof は定数式</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/void-main.html">[迷信] void main(void)</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/initialization-by-memset.html">[迷信] とりあえず memset で初期化</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/functor-is-not-copied-in-algorithm.html">[迷信] アルゴリズム関数内で関数オブジェクトはコピーされない</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/memory-leak-at-dynamic-creation-fail.html">[迷信] オブジェクトの動的生成に失敗するとメモリリークする</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/dont-throw-exception-from-constructor.html">[迷信] コンストラクタから例外を送出してはならない</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/zero-clear-in-constructor.html">[迷信] コンストラクタで自身をゼロクリア</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/compiler-is-mind-reader.html">[迷信] コンパイラはプログラマの心を察してくれる</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/modify-access-specifiers.html">[迷信] コンパイルエラーが出るのでアクセス指定子を修正</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/there-must-not-be-immediates.html">[迷信] ソースコード中の即値を全廃せよ</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/last-letter-of-file-is-brace.html">[迷信] ソースファイルの末尾に }</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/qsort.html">[迷信] データ列のソートには qsort 関数を使うべし</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/main-is-always-called-first.html">[迷信] プログラムは必ず main から始まる</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/multicharacter-literals.html">[迷信] 一重引用符の中には一文字しか書けない</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/there-is-not-16bit-int-now.html">[迷信] 今どき int が 16 ビットの処理系なんて無い</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/bufsiz.html">[迷信] 入力データ格納用配列のサイズは BUFSIZ</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/must-release-memory-by-onself.html">[迷信] 割付けたメモリはプログラマが自分で解放しなければならない</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/real-types-are-floating-types.html">[迷信] 実数型とは浮動小数点型のことである</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/quoted-headername-is-searched-for-from-cwd.html">[迷信] 引用符で囲んだヘッダ名はカレントディレクトリから探索する</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/conversion-from-string-to-integer-with-atoi.html">[迷信] 文字列から整数への変換には atoi</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/tags-begin-in-underscore.html">[迷信] 構造体のタグ名は下線で始める</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/struct-is-not-class.html">[迷信] 構造体はクラスではない</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech/superstitions/only-alnums-and-underscore-are-usable-for-identifier.html">[迷信] 識別子に使える文字は英数字と下線のみ</a></li>
+<li class="leaf last"><a href="http://www.kijineko.co.jp/tech/superstitions/non-local-objects-have-external-linkage.html">[迷信] 非局所オブジェクトは外部結合</a></li>
+</ul></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/cfms">C99関数・マクロ・前処理スクリプト集</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/creintro">C言語再入門</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/cfgu">C言語徹底入門</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/drupal-memo">Drupal メモ</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/toppers">TOPPERS 情報</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/betterc">ベターCとしてのC++</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/micom-memo">マイコン メモ</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/how-to-library">ライブラリ開発入門</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/sepcomp">分割コンパイルをきわめる</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/pseudoprocessor">擬似プロセッサを作る</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/elephant-eggs">象の卵を探して...</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/tech/reinvwheel">車輪の再発明</a></li>
+<li class="collapsed last"><a href="http://www.kijineko.co.jp/tech/old">過去の情報</a></li>
+</ul></li>
+</ul></div>
+<div id="book-block-menu-403" class="book-block-menu">
+  <ul class="menu"><li class="collapsed last"><a href="http://www.kijineko.co.jp/support">サポート情報</a></li>
+</ul></div>
+  </div>
+</div>
+<div id="block-user-1" class="block block-user">
+  <h2>ナビゲーション</h2>
+
+  <div class="content">
+    <ul class="menu"><li class="leaf first"><a href="http://www.kijineko.co.jp/" title="">ホーム</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/summary" title="">はじめての方へ</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/company.html" title="">会社案内</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/services">サービス内容</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/works" title="">業務実績</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/faq" title="">よくある質問</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/tech">技術情報</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/support" title="">サポート情報</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/lab" title="">実験室</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/blog">ブログ</a></li>
+<li class="collapsed"><a href="http://www.kijineko.co.jp/download">ダウンロード</a></li>
+<li class="leaf"><a href="http://www.kijineko.co.jp/contact" title="">お問い合わせ</a></li>
+<li class="leaf"><a href="http://www.kijineko-software.com/" title="">きじねこソフトウェア</a></li>
+<li class="leaf last"><a href="http://www.kijineko.co.jp/taxonomy/term/404" title="">TODOリスト</a></li>
+</ul>  </div>
+</div>
+<div id="block-blog-0" class="block block-blog">
+  <h2>新着情報</h2>
+
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="http://www.kijineko.co.jp/node/967">第15期を迎えました。</a></li>
+<li><a href="http://www.kijineko.co.jp/node/966">事務所を移転しました。</a></li>
+<li><a href="http://www.kijineko.co.jp/node/965">新年あけましておめでとうございます。</a></li>
+<li><a href="http://www.kijineko.co.jp/node/964">『組込み現場の「C++」プログラミング 明日から使える徹底入門』をウェブ上に全文掲載しました。</a></li>
+<li><a href="http://www.kijineko.co.jp/node/963">株式会社クローバーフィールドの公式ウェブサイトが移転しました。</a></li>
+<li><a href="http://www.kijineko.co.jp/node/962">電話番号変更のご案内</a></li>
+<li><a href="http://www.kijineko.co.jp/node/961">弊社または株式会社クローバーフィールドで受注いたします。</a></li>
+<li><a href="http://www.kijineko.co.jp/node/960">組込みエンジニアを募集しています。</a></li>
+<li><a href="http://www.kijineko.co.jp/node/959">ウェブサイトの移行作業中</a></li>
+<li class="last"><a href="http://www.kijineko.co.jp/node/958">高校の同窓会</a></li>
+</ul></div><div class="more-link"><a href="http://www.kijineko.co.jp/blog" title="最新のブログエントリを表示">続き</a></div>  </div>
+</div>
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+    <div id="footer"><div id="footer-inner" class="region region-footer">
+
+      <div id="footer-message"><p>
+<a href="http://www.kijineko.co.jp/">ホーム</a>　|　<a href="http://www.kijineko.co.jp/company.html">会社案内</a>　|　<a href="http://www.kijineko.co.jp/services">サービス内容</a>　|　<a href="http://www.kijineko.co.jp/works">業務実績</a>　|　<a href="http://www.kijineko.co.jp/faq">FAQ</a>　|　<a href="http://www.kijineko.co.jp/tech">技術情報</a>　| <a href="http://www.kijineko.co.jp/support">サポート情報</a> |　<a href="http://www.kijineko.co.jp/blog">ブログ</a>　|　<a href="http://www.kijineko.co.jp/tech/superstitions">C/C++迷信集</a>　|　<a href="http://www.kijineko.co.jp/legal-notation.html">特商法表記</a>　|　<a href="http://www.kijineko.co.jp/privacy-policy.html">個人情報保護ポリシー</a>　|　<a href="http://www.kijineko.co.jp/links.html">リンク集</a>
+</p>
+</div>
+
+      <div id="block-block-34" class="block block-block">
+
+  <div class="content">
+    Copyright © 2005-2017 by <a href="http://www.kijineko.co.jp/">Kijineko Inc.</a><br>リンクはご自由に  </div>
+</div>
+
+    </div></div> <!-- /#footer-inner, /#footer -->
+
+  </div></div> <!-- /#page-inner, /#page -->
+
+      <div id="closure-blocks" class="region region-closure"><div id="block-block-8" class="block block-block">
+
+  <div class="content">
+    <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script><script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-1171660-1");
+pageTracker._trackPageview();
+</script>  </div>
+</div>
+</div>
+  
+  
+
+</body></html>

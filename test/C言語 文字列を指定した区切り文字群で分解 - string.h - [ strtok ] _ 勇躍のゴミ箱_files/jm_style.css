@@ -1,0 +1,358 @@
+/************/
+/*  GLOBAL  */
+/************/
+
+/* NON-HEADER */
+*{padding:0; margin:0;}
+ body {font-size:62.5%; background-color:rgb(255,255,255); font-family:"Verdana","¥Ò¥é¥®¥Î³Ñ¥´ Pro W3","£Í£Ó ¥´¥·¥Ã¥¯","Osaka¡¾ÅùÉý";} /*Font-size: 1.0em = 10px when browser default size is 16px*/
+.page-container {width:1050px; margin:0px auto; margin-top:10px; margin-bottom:10px; font-size:1.0em;}
+.main {clear:both; width:1044px; padding-bottom:30px; border-left:solid 3px rgb(175,175,175); border-right:solid 3px rgb(175,175,175); background:transparent url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316410.gif) top left repeat-y;}
+.main-navigation {display:inline /*Fix IE floating margin bug*/; float:left; width:200px; overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/; background:rgb(245,245,245);}
+.main-content {display:inline; /*Fix IE floating margin bug*/; float:left; width:600px; margin:0 0 0 30px; overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/; font-size:12px;}
+.main-subcontent {display:inline /*Fix IE floating margin bug*/; float:right; width:185px; margin:0 15px 0 0; overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/;}
+.main-subcontent-sub {display:inline /*Fix IE floating margin bug*/; float:right; width:200px; margin:0 5px 5px 0; overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/;}
+.footer {clear:both; width:1044px; padding:1.0em 0 1.0em 0; border-top:solid 3px rgb(175,175,175); border-left:solid 3px rgb(175,175,175); border-right:solid 3px rgb(175,175,175); border-bottom:solid 3px rgb(175,175,175); background:rgb(225,225,225); font-size:1.0em; overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/;}
+
+/* HEADER */
+.header {width:1050px;}
+.header-top {width:1044px; height:90px; border-top:solid 3px rgb(175,175,175); border-left:solid 3px rgb(175,175,175); border-right:solid 3px rgb(175,175,175); margin-top:10px; background:rgb(235,235,235); overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/;}
+.header-bottom {width:1044px; border-bottom:solid 3px rgb(175,175,175); border-left:solid 3px rgb(175,175,175); border-right:solid 3px rgb(175,175,175); border-top:solid 1px rgb(175,175,175);}
+.header-breadcrumbs {clear:both; width:1044px; padding:1.0em 0 1.5em 0; border-left:solid 3px rgb(175,175,175); border-right:solid 3px rgb(175,175,175);}
+.header .round-border-topleft {width:25px; height:25px; position:absolute; z-index:100; background:url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316334.gif) no-repeat; margin-top:-3px; margin-left:-3px;}
+.header .round-border-topright {width:25px; height:25px; position:absolute; z-index:100; background:url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316402.gif) no-repeat; margin-top:-3px; margin-left:1022px;}
+
+/*************/
+/*  2. HEAD  */
+/*************/
+.sitelogo {width:50px; height:50px; position:absolute; z-index:1; margin:18px 0 0 15px; background:url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316428.png);}
+.sitename {width:300px; height:45px; position:absolute; z-index:1; margin:23px 0 0 75px; overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/;}
+.sitename h1 {font-weight:normal; font-size:28px;}
+.sitename h2 {margin:-2px 0 0 0; color:rgb(125,125,125); font-weight:normal; font-size:12px;}
+.sitename a{text-decoration:none; color:rgb(10,84,161);}
+.sitename a:hover {text-decoration:none; color:rgb(125,125,125);}
+
+.nav0 {width:350px; position:absolute; z-index:2; margin:25px 0 0 0; margin-left:610px !important /*Non-IE6*/; margin-left:613px /*IE6*/;}
+.nav0 ul {float:right; padding:0 20px 0 0;}
+.nav0 li {display:inline; list-style:none;}
+.nav0 li a {padding:0 0 0 3px;}
+.nav0 a:hover {text-decoration:none;}
+.nav0 a img {height:20px; border:none;}
+
+.nav1 {width:350px; position:absolute; z-index:3; margin:55px 0 0 680px;}
+.nav1 ul {float:right; padding:0 15px 0 0; font-weight:normal;}
+.nav1 li {display:inline; list-style:none;}
+.nav1 li a {display:block; float:left; padding:2px 5px 2px 5px; color:rgb(125,125,125); text-decoration:none; font-size:110%;}
+.nav1 a:hover {text-decoration:none; color:rgb(50,50,50);}
+
+/*Drop-down menu*/
+.nav2 {white-space:nowrap /*IE hack*/; float:left; width:1044px; background:rgb(225,225,225); color:rgb(100,100,100); font-size:130%;} /*Color navigation bar normal mode*/
+.nav2 ul {list-style-type:none;}
+.nav2 ul li {float:left; z-index:auto !important /*Non-IE6*/; z-index:1000 /*IE6*/; border-right:solid 1px rgb(175,175,175);}
+.nav2 ul li a {float:none !important /*Non-IE6*/; float:left /*IE-6*/; display:block; height:2.1em; line-height:2.1em; padding:0 16px 0 16px; text-decoration:none; font-weight:normal; color: rgb(100,100,100);}
+.nav2 ul li ul {display:none; border:none;}
+
+/*Non-IE6 hovering*/
+.nav2 ul li:hover {position:relative;} /*Sylvain IE hack*/
+.nav2 ul li:hover a {background-color:rgb(215,215,215); text-decoration:none;} /*Color main cells hovering mode*/
+.nav2 ul li:hover ul {display:block; width:10.0em; position:absolute; z-index:999; top:2.0em; margin-top:0.1em; left:0;}
+.nav2 ul li:hover ul li a {white-space:normal; display:block; width:10.0em; height:auto; line-height:1.3em; margin-left:-1px; padding:4px 16px 4px 16px; border-left:solid 1px rgb(175,175,175); border-bottom: solid 1px rgb(175,175,175); background-color:rgb(240,240,240); font-weight:normal; color:rgb(100,100,100);} /*Color subcells normal mode*/
+.nav2 ul li:hover ul li a:hover {background-color:rgb(215,215,215); text-decoration:none;} /*Color subcells hovering mode*/
+
+/*IE6 hovering*/
+.nav2 table {position:absolute; top:0; left:-1px; border-collapse:collapse;}
+.nav2 ul li a:hover {position:relative /*Sylvain IE hack*/; z-index:1000 /*Sylvain IE hack*/; background-color:rgb(215,215,215); text-decoration:none;} /*Color main cells hovering mode*/
+.nav2 ul li a:hover ul {display:block; width:10.0em; position:absolute; z-index:999; top:2.1em; top:2.0em; left:0; margin-top:0.1em;}
+.nav2 ul li a:hover ul li a {white-space:normal; display:block; width:10.0em; height:1px; line-height:1.3em; padding:4px 16px 4px 16px; border-left:solid 1px rgb(175,175,175); border-bottom: solid 1px rgb(175,175,175); background-color:rgb(240,240,240); font-weight:normal; color:rgb(50,50,50);} /*Color subcells normal mode*/
+.nav2 ul li a:hover ul li a:hover {background-color:rgb(215,215,215); text-decoration:none;} /*Color subcells hovering mode*/
+
+.header-breadcrumbs ul {float:left; width:610px; list-style:none; padding:0 0 0 15px; font-family:verdana,arial,sans-serif;}
+.header-breadcrumbs ul li {display:inline; padding:0 0 0 10px; background:transparent url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316312.gif) no-repeat 0 50%; font-weight:normal; color:rgb(125,125,125); font-size:120%;}
+.header-breadcrumbs ul a {color:rgb(10,84,170); text-decoration:none;}
+.header-breadcrumbs ul a:hover {color:rgb(10,84,170); text-decoration:underline;}
+
+.header-breadcrumbs .searchform {float:right; width:285px; padding:0 17px 0px 0px !important /*Non-IE6*/; padding:0 12px 0px 0px /*IE6*/;}
+.header-breadcrumbs .searchform form fieldset {float:right; border:none;}
+.header-breadcrumbs .searchform input.field {width:10.0em; padding:0.2em 0 0.2em 0; border:1px solid rgb(200,200,200); font-family:verdana,arial,sans-serif; font-size:120%; }
+.header-breadcrumbs .searchform input.button {width:3.0em; padding:1px !important /*Non-IE6*/; padding:0 /*IE6*/; background:rgb(230,230,230); border:solid 1px rgb(150,150,150); text-align:center; font-family:verdana,arial,sans-serif; color:rgb(150,150,150); font-size:120%;}
+.header-breadcrumbs .searchform input.button:hover {cursor:pointer; border:solid 1px rgb(80,80,80); background:rgb(220,220,220); color:rgb(80,80,80);}
+
+/******************/
+/*  MAIN SECTION  */
+/******************/
+
+/* MAIN NAVIGATION */
+.main-navigation .round-border-topright {width:10px; height:10px; position:absolute; z-index:100; margin:0 0 0 190px; background:url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316332.gif) no-repeat;}
+
+/* MAIN CONTENT */
+.column1-unit {width:590px; margin-bottom:10px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/;}
+.column2-unit-left {float:left; width:225px; margin-bottom:10px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/;}
+.column2-unit-right {float:right; width:225px; margin-bottom:10px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/;}
+.column3-unit-left {float:left; width:137px; margin-bottom:10px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/;}
+.column3-unit-middle {float:left; width:137px; margin-bottom:10px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/; margin-left:40px;}
+.column3-unit-right {float:right; width:137px; margin-bottom:10px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/;}
+.column1-unit-sub {margin:0 0 -30px 0; padding:10px 0 0 15px;}
+
+/* MAIN SUBCONTENT */
+.subcontent-unit-border {width:183px; margin:0 0 2.0em 0; padding:0 0 5px 0; border:solid 1px rgb(190,190,190); background:rgb(235,235,235);}
+.subcontent-unit-border-white {width:183px; margin:0 0 2.5em 0; padding:0 0 10px 0; border:solid 1px rgb(255,255,255); background-color:rgb(255,255,255);}
+.subcontent-unit-border-green {width:183px; margin:0 0 2.5em 0; padding:0 0 10px 0; border:solid 1px rgb(160,214,81); background-color:rgb(217,239,185);}
+.subcontent-unit-border-blue  {width:183px; margin:0 0 2.5em 0; padding:0 0 10px 0; border:solid 1px rgb(137,170,214); background-color:rgb(213,225,240);}
+.subcontent-unit-border-orange {width:183px; margin:0 0 2.5em 0px; padding:0 0 10px 0; border:solid 1px rgb(232,177,13); background-color:rgb(248,224,150);}
+
+.subcontent-unit-noborder {width:185px; margin:0 0 2.5em 0; padding:0 0 10px 0; background:rgb(235,235,235);}
+.subcontent-unit-noborder-white {width:185px; margin:0 0 2.5em 0; padding:0 0 10px 0; background-color:rgb(255,255,255);}
+.subcontent-unit-noborder-green {width:185px; margin:0 0 2.5em 0; padding:0 0 10px 0; background-color:rgb(217,239,185);}
+.subcontent-unit-noborder-blue  {width:185px; margin:0 0 2.5em 0; padding:0 0 10px 0; background-color:rgb(213,225,240);}
+.subcontent-unit-noborder-orange {width:185px; margin:0 0 2.5em 0; padding:0 0 10px 0; background-color:rgb(248,224,150);}
+
+.round-border-topleft {width:10px; height:10px; position:absolute; z-index:100; background:url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316331.gif) no-repeat; margin-top:-1px; margin-left:-1px;}
+.round-border-topright {width:10px; height:10px; position:absolute; z-index:100; background:url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316332.gif) no-repeat; margin-top:-1px; margin-left:174px;}
+.round-noborder-topleft {width:10px; height:10px; position:absolute; z-index:100; background:url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316331.gif) no-repeat; margin-top:0px; margin-left:0px;}
+.round-noborder-topright {width:10px; height:10px; position:absolute; z-index:100; background:url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316332.gif) no-repeat; margin-top:0px; margin-left:175px;}
+
+/********************/
+/*  FOOTER SECTION  */
+/********************/
+.footer p {line-height:1.3em; text-align:center; color:rgb(125,125,125); font-weight:bold; font-size:110%;}
+.footer p.credits {font-weight:normal;}
+.footer p.top {text-align:right;}
+.footer a {text-decoration:underline; color:rgb(125,125,125);}
+.footer a:hover {text-decoration:none; color:rgb(0,0,0);}
+.footer a:visited {color:rgb(0,0,0);}
+
+/******************/
+/*  CLEAR FLOATS  */
+/******************/
+.page-container:after, .header:after, .header-bottom:after, .header-breadcrumbs:after, .main:after, .main-navigation:after, .main-content:after, .main-content div:after, .main-subcontent:after {content:"."; display:block; height:0; clear:both; visibility:hidden;}
+.column1-unit:after, .column2-unit-left:after, .column2-unit-right:after, .column3-unit-left:after, .column3-unit-middle:after, .column3-unit-right:after {content:"."; display:block; height:0; clear:both; visibility:hidden;}
+.subcontent-unit-border:after, .subcontent-unit-noborder:after {content:"."; display:block; height:0; clear:both; visibility:hidden;}
+.subcontent-unit-border-white:after, .subcontent-unit-border-blue:after, .subcontent-unit-border-green:after, .subcontent-unit-border-orange:after {content:"."; display:block; height:0; clear:both; visibility:hidden;}
+.subcontent-unit-noborder-white:after, .subcontent-unit-noborder-blue:after, .subcontent-unit-noborder-green:after, .subcontent-unit-noborder-orange:after {content:"."; display:block; height:0; clear:both; visibility:hidden;}
+ p:after {content:"."; display:block; height:0; /*clear:both*/; visibility:hidden;}
+.footer:after {content:"."; display:block; height:0; clear:both; visibility:hidden;}
+.clear-contentunit {clear:both; width:590px; height:0.1em; border:none; background:rgb(210,210,210); color:rgb(210,210,210);}
+
+/********************************/
+/*  PRINTING and MISCELLANEOUS  */
+/********************************/
+@media print {.header-top {width:1044px; height:80px; background:rgb(240,240,240); overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/;}}
+@media print {.header-breadcrumbs {width:1044px; background:transparent;}}
+@media print {.nav2 {float:left; width:1044px; border:none; background:rgb(240,240,240); color:rgb(75,75,75); font-size:1.0em; font-size:130%;}} /*Color navigation bar normal mode*/
+@media print {.main {clear:both; width:1044px; padding-bottom:30px; background:transparent;}}
+@media print {.main-navigation {display:inline /*Fix IE floating margin bug*/; float:left; width:199px; border-right:solid 1px rgb(200,200,200); border-bottom:solid 1px rgb(200,200,200); background-color:rgb(240,240,240); overflow:visible !important /*Firefox*/; overflow:hidden /*IE*/;}}
+@media print {.footer {clear:both; width:1044px; height:3.7em; padding:1.1em 0 0; background:rgb(240,240,240); font-size:1.0em; overflow:visible !important /*Firefox*/; overflow:hidden /*IE6*/;}}
+
+
+
+
+/******************/
+/*  MAIN SECTION  */
+/******************/
+
+/* MAIN NAVIGATION */
+.nav3-grid {width:199px; border-bottom:solid 1px rgb(200,200,200);}
+.nav3-grid dt.capter {display:block; min-height:2.0em /*Non-IE6*/; height:auto !important; height:2.0em /*IE6*/; line-height:2.0em; padding:0px 10px 0px 20px;  border-top: solid 1px rgb(200,200,200); text-decoration:none; color:rgb(80,80,80); font-weight:bold; font-size:12px;}
+.nav3-grid dt a, .nav3-grid dt a:visited {display:block; min-height:2.0em /*Non-IE6*/; height:auto !important; height:2.0em /*IE6*/; line-height:2.0em; padding:0px 10px 0px 20px;  border-top: solid 1px rgb(200,200,200); text-decoration:none; color:rgb(10,84,170); font-weight:bold; font-size:12px;}
+.nav3-grid dd a, .nav3-grid dd a:visited {display:block; min-height:1.7em /*Non-IE6*/; height:auto !important; height:1.7em /*IE6*/; line-height:1.7em; padding:0px 10px 0px 40px; border:none; font-weight:normal; text-decoration:none; color:rgb(10,84,170); font-size:12px;}
+.nav3-grid dt a:hover, .nav3-grid dd a:hover {background-color:rgb(225,225,225); /*background-color:rgb(143,174,215) /*For blue background*/; color:rgb(30,30,255); text-decoration:none;}
+
+.nav3-bullet {width:170px; margin:10px 0 0 20px;}
+.nav3-bullet dt a, .nav3-bullet dt a:visited {line-height:2.0em; padding:0 0 0 10px; background:url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316317.gif) no-repeat 0px 50%; text-decoration:none; color:rgb(70,122,167); font-weight:bold; font-size:120%;}
+.nav3-bullet dd a, .nav3-bullet dd a:visited {line-height:1.7em; margin:0 0 0 15px; padding:0 0 0 10px; background:url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316325.gif) no-repeat 0px 50%; text-decoration:none; color:rgb(70,122,167); font-weight:normal; font-size:120%;}
+.nav3-bullet dt a:hover {background:url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316321.gif) no-repeat 0px 50%; text-decoration:underline; color:rgb(42,90,138);}
+.nav3-bullet dd a:hover {background:url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316328.gif) no-repeat 0px 50%; text-decoration:underline; color:rgb(42,90,138);}
+
+.nav3-nobullet {width:170px; margin:10px 0 0 20px;}
+.nav3-nobullet dt a, .nav3-nobullet dt a:visited {line-height:2.0em; text-decoration:none; color:rgb(70,122,167); font-weight:bold; font-size:120%;}
+.nav3-nobullet dd a, .nav3-nobullet dd a:visited {line-height:1.7em; margin:0 0 0 15px; text-decoration:none; color:rgb(70,122,167); font-weight:normal; font-size:120%;}
+.nav3-nobullet dt a:hover, .nav3-nobullet dd a:hover {text-decoration:underline; color:rgb(42,90,138);}
+
+.main-navigation .loginform {width:160px; margin:-10px 20px 0 20px;}
+.main-navigation .loginform p {clear:both; margin:0; padding:0;}
+.main-navigation .loginform fieldset {width:160px; border:none;}
+.main-navigation .loginform label.top {float:left; width:125px; margin:0 0 2px 0; font-size:110%;}
+.main-navigation .loginform label.right {float:left; width:125px; margin:5px 0 0 0; padding:0 0 0 3px; /*IE6*/; font-size:110%;}
+.main-navigation .loginform input.field {width:158px; margin:0 0 5px 0; padding:0.1em 0 0.2em 0 !important /*Non-IE6*/; padding:0.2em 0 0.3em 0 /*IE6*/; border:solid 1px rgb(200,200,200); font-family:verdana,arial,sans-serif; font-size:110%;}
+.main-navigation .loginform input.checkbox {float:left; margin:5px 0 0 0 !important /*Non-IE6*/; margin:2px 0 0 -3px /*IE6*/; border:none;}
+.main-navigation .loginform input.button {float:left; width:5.0em; margin:10px 0 5px 0; padding:1px; background:rgb(230,230,230); border:solid 1px rgb(150,150,150); text-align:center; font-family:verdana,arial,sans-serif; color:rgb(150,150,150); font-size:110%;}
+.main-navigation .loginform input.button:hover {cursor:pointer; border:solid 1px rgb(80,80,80); background:rgb(220,220,220); color:rgb(80,80,80);}
+
+.main-navigation .searchform {width:160px; margin:0 20px 0 20px;}
+.main-navigation .searchform p {clear:both; margin:0; padding:0;}
+.main-navigation .searchform fieldset {border:none;}
+.main-navigation .searchform input.field {float:left; width:158px; padding:0.1em 0 0.2em 0 !important /*Non-IE6*/; padding:0.2em 0 0.3em 0 /*IE6*/; border:1px solid rgb(200,200,200); font-family:verdana,arial,sans-serif; font-size:120%;}
+.main-navigation .searchform input.button {float:left; width:3.0em; margin-top: 0.5em; padding:1px; background:rgb(230,230,230); border:solid 1px rgb(150,150,150); text-align:center; font-family:verdana,arial,sans-serif; color:rgb(150,150,150); font-size:120%;}
+.main-navigation .searchform input.button:hover {cursor:pointer; border:solid 1px rgb(80,80,80); background:rgb(220,220,220); color:rgb(80,80,80);}
+
+.main-navigation h1.first {clear:both; margin:0px; padding:4px 20px 3px 20px; background-color:rgb(10,84,161); /*background-color:rgb(137,170,214)/*For blue background*/; font-family:"trebuchet ms",arial,sans-serif; color:rgb(255,255,255); font-weight:bold; font-size:150%;}
+.main-navigation h1 {clear:both; margin:30px 0 20px 0; padding:4px 20px 3px 20px; background:rgb(190,190,190); font-family:"trebuchet ms",arial,sans-serif; color:rgb(255,255,255); font-weight:bold; font-size:150%;}
+.main-navigation h2 {clear:both; margin:20px 10px 10px 20px; font-family:"trebuchet ms",arial,sans-serif; color:rgb(100,100,100); font-weight:bold; font-size:150%;}
+.main-navigation h3 {clear:both; margin:10px 10px 5px 20px; color:rgb(80,80,80); font-weight:bold; font-size:110%;} /* Note: h2 not existent, to make identical to formats for main-navigation for easier exchange */
+.main-navigation p {clear:both; margin:0 10px 10px 20px; color:rgb(80,80,80); line-height:1.3em; font-size:110%;}
+.main-navigation p.center {text-align:center;}
+.main-navigation p.right {text-align:right;}
+
+.main-navigation ul {list-style:none; margin:0.5em 10px 1.0em 20px;}
+.main-navigation ul li {margin:5px 0 0.2em 2px; padding:0px 0px 0 11px; background:url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316317.gif) no-repeat 0 0.4em; line-height:1.2em; font-size:110%;}
+.main-navigation ol {margin:0.5em 10px 1.0em 40px !important /*Non-IE6*/; margin:0.5em 10px 1.0em 45px /*IE6*/;}
+.main-navigation ol li {list-style-position:outside; margin:0 0 0.4em 0; font-size:110%;}
+
+/* MAIN CONTENT */
+.main-content h1.pagetitle {height:22px; margin:10px 0 0.4em 0; padding:8px 0 2px 20px; border-bottom:solid 0px rgb(137,170,214); font-family:"trebuchet ms",arial,sans-serif; color:rgb(255,255,255); font-weight:bold; font-size:14px; background: #0a54a1 url(http://imaging.jugem.jp/template/hekomi/img/title_back.gif) no-repeat;}
+.main-content h1.block {clear:both; margin:1.0em 0 0em 0; padding:2px 0 2px 2px; background:rgb(190,190,190); font-family:"trebuchet ms",arial,sans-serif; color:rgb(255,255,255); font-weight:bold; font-size:14px;}
+.main-content h1 {clear:both; margin:1.0em 0 0.5em 0; font-family:"trebuchet ms",arial,sans-serif; color:rgb(80,80,80); font-weight:normal; font-size:16px;}
+.main-content h2 {float:right; clear:both; margin:-1.0em 0 0.5em 0; font-family:"trebuchet ms",arial,sans-serif; color:rgb(125,125,125); font-weight:normal; font-size:12px;}
+.main-content h3 {clear:both; margin:1.0em 0 0.5em 0; font-family:"trebuchet ms",arial,sans-serif; color:rgb(80,80,80); font-weight:normal; font-size:10px;}
+.main-content h1.side {clear:none;}
+.main-content h2.side {clear:none;}
+.main-content h3.side {clear:none;}
+
+.main-content h4 {margin:1.5em 0 1.0em 0; color:rgb(80,80,80); font-family:"trebuchet ms",arial,sans-serif; font-weight:bold; font-size:14px;}
+.main-content h5 {margin:1.5em 0 1.0em 0; color:rgb(80,80,80); font-family:"trebuchet ms",arial,sans-serif; font-size:12px;}
+.main-content h6 {text-align:center; margin:1.2em 0 0.2em 0; color:rgb(80,80,80); font-weight:bold; font-size:10px;}
+.main-content p {margin:0 0 1.0em 0; line-height:1.5em; font-size:12px;}
+.main-content p.center {text-align:center;}
+.main-content p.right {text-align:right;}
+.main-content p.details {clear:both; margin:-0.25em 0 1.0em 0; line-height:1.0em; font-size:110%;}
+.main-content blockquote {clear:both; margin:0 30px 0.6em 30px; font-size:90%;}
+
+.main-content table.func {clear:both; width:500px; margin:0 0 0 10px; table-layout:fixed; border-collapse:collapse; empty-cells:show;}
+.main-content table.func caption {empty-cells:show; border-left:solid 1px rgb(255,255,255); border-right:solid 1px rgb(255,255,255); border-top:solid 2px rgb(255,255,255); border-bottom:solid 3px rgb(50,170,230); text-align:left; color:rgb(255,0,0); font-family:Tahoma; font-weight:bold; font-size:17px;}
+.main-content table.func th {width:60px;  padding:2px 0 2px 5px; border-left:solid 1px rgb(200,200,200); border-right:solid 1px rgb(255,255,255); border-top:solid 1px rgb(200,200,200); border-bottom:solid 1px rgb(200,200,200); text-align:left; font-weight:bold;}
+.main-content table.func td {width:440px; padding:2px 0 2px 5px; border-left:solid 1px rgb(255,255,255); border-right:solid 1px rgb(200,200,200); border-top:solid 1px rgb(200,200,200); border-bottom:solid 1px rgb(200,200,200); text-align:left; font-weight:normal;}
+
+.main-content table.sample {clear:both; width:500px; margin:0 0 0 10px; table-layout:fixed; border-collapse:collapse; empty-cells:show;}
+.main-content table.sample caption {empty-cells:show; border-left:solid 1px rgb(255,255,255); border-right:solid 1px rgb(255,255,255); border-top:solid 2px rgb(255,255,255); border-bottom:solid 3px rgb(230,170,50); text-align:left; color:rgb(0,0,0); font-family:Tahoma; font-weight:bold; font-size:12px;}
+.main-content table.sample th {width:500px; padding:10px 0 10px 5px; border-left:solid 1px rgb(200,200,200); border-right:solid 1px rgb(200,200,200); border-top:solid 1px rgb(200,200,200); border-bottom:solid 1px rgb(200,200,200); text-align:left; font-weight:normal;}
+.main-content table.sample td {width:500px; padding:2px 0 2px 5px; border-left:solid 1px rgb(200,200,200); border-right:solid 1px rgb(200,200,200); border-top:solid 1px rgb(200,200,200); border-bottom:solid 1px rgb(200,200,200); text-align:left; font-weight:normal;}
+
+.main-content table.result {clear:both; width:500px; margin:0 0 0 10px; table-layout:fixed; border-collapse:collapse; empty-cells:show;}
+.main-content table.result caption {empty-cells:show; border-left:solid 1px rgb(255,255,255); border-right:solid 1px rgb(255,255,255); border-top:solid 2px rgb(255,255,255); border-bottom:solid 3px rgb(230,170,50); text-align:left; color:rgb(0,0,0); font-family:Tahoma; font-weight:bold; font-size:12px;}
+.main-content table.result th {width:500px; padding:10px 0 10px 5px; border-left:solid 1px rgb(200,200,200); border-right:solid 1px rgb(200,200,200); border-top:solid 1px rgb(200,200,200); border-bottom:solid 1px rgb(200,200,200); text-align:left; font-weight:normal;}
+.main-content table.result td {width:500px; padding:10px 0 10px 5px; border-left:solid 1px rgb(200,200,200); border-right:solid 1px rgb(200,200,200); border-top:solid 1px rgb(200,200,200); border-bottom:solid 1px rgb(200,200,200); text-align:left; font-weight:normal;}
+
+.main-content table.reservedword {clear:both; width:500px; margin:0 0 0 10px; table-layout:fixed; border-collapse:collapse; empty-cells:show;}
+.main-content table.reservedword caption {empty-cells:show; border-left:solid 1px rgb(255,255,255); border-right:solid 1px rgb(255,255,255); border-top:solid 2px rgb(255,255,255); border-bottom:solid 3px rgb(50,170,230); text-align:left; color:rgb(255,0,0); font-family:Tahoma; font-weight:bold; font-size:17px;}
+.main-content table.reservedword th {width:100px;  padding:2px 0 2px 5px; border-left:solid 1px rgb(200,200,200); border-right:solid 1px rgb(255,255,255); border-top:solid 1px rgb(200,200,200); border-bottom:solid 1px rgb(200,200,200); text-align:left; font-weight:bold;}
+.main-content table.reservedword td {width:400px; padding:2px 0 2px 5px; border-left:solid 1px rgb(255,255,255); border-right:solid 1px rgb(200,200,200); border-top:solid 1px rgb(200,200,200); border-bottom:solid 1px rgb(200,200,200); text-align:left; font-weight:normal;}
+
+.main-content table.openmode {clear:both; width:500px; margin:0 0 0 10px; table-layout:fixed; border-collapse:collapse; empty-cells:show;}
+.main-content table.openmode caption {empty-cells:show; border-left:solid 1px rgb(255,255,255); border-right:solid 1px rgb(255,255,255); border-top:solid 2px rgb(255,255,255); border-bottom:solid 3px rgb(50,170,230); text-align:left; color:rgb(255,0,0); font-family:Tahoma; font-weight:bold; font-size:17px;}
+.main-content table.openmode th {width:150px;  padding:2px 0 2px 5px; border-left:solid 1px rgb(200,200,200); border-right:solid 1px rgb(255,255,255); border-top:solid 1px rgb(200,200,200); border-bottom:solid 1px rgb(200,200,200); text-align:left; font-weight:bold;}
+.main-content table.openmode td {width:350px; padding:2px 0 2px 5px; border-left:solid 1px rgb(255,255,255); border-right:solid 1px rgb(200,200,200); border-top:solid 1px rgb(200,200,200); border-bottom:solid 1px rgb(200,200,200); text-align:left; font-weight:normal;}
+
+.main-content table.lconv {clear:both; width:500px; margin:0 0 0 10px; table-layout:fixed; border-collapse:collapse; empty-cells:show;}
+.main-content table.lconv caption {empty-cells:show; border-left:solid 1px rgb(255,255,255); border-right:solid 1px rgb(255,255,255); border-top:solid 2px rgb(255,255,255); border-bottom:solid 3px rgb(50,170,230); text-align:left; color:rgb(255,0,0); font-family:Tahoma; font-weight:bold; font-size:17px;}
+.main-content table.lconv th {width:200px;  padding:2px 0 2px 5px; border-left:solid 1px rgb(200,200,200); border-right:solid 1px rgb(255,255,255); border-top:solid 1px rgb(200,200,200); border-bottom:solid 1px rgb(200,200,200); text-align:left; font-weight:bold;}
+.main-content table.lconv td {width:300px; padding:2px 0 2px 5px; border-left:solid 1px rgb(255,255,255); border-right:solid 1px rgb(200,200,200); border-top:solid 1px rgb(200,200,200); border-bottom:solid 1px rgb(200,200,200); text-align:left; font-weight:normal;}
+
+p.caption {clear:both; margin:0.5em 0 2.0em 20px; text-align:left; color:rgb(80,80,80); font-size:110%;}
+
+.main-content ul {list-style:none; margin:0.5em 0 1.0em 0;}
+.main-content ul li {margin:0 0 0.2em 2px; padding:0 0 0 12px; background:url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316317.gif) no-repeat 0 0.5em; line-height:1.4em; font-size:120%;}
+.main-content ol {margin:0.5em 0 1.0em 20px !important /*Non-IE6*/; margin:0.5em 0 1.0em 25px /*IE6*/;}
+.main-content ol li {list-style-position:outside; margin:0 0 0.2em 0; line-height:1.4em; font-size:120%;}
+
+.contactform {width:418px; margin:2.0em 0 0 0; padding:10px 10px 0 10px; border:solid 1px rgb(200,200,200); background-color:rgb(240,240,240);}
+.contactform fieldset {padding:20px 0 0 0 !important /*Non-IE6*/; padding:0 /*IE6*/; margin:0 0 20px 0; border:solid 1px rgb(220,220,220);}
+.contactform fieldset legend {margin:0 0 0 5px !important /*Non-IE*/; margin:0 0 20px 5px /*IE6*/; padding:0 2px 0 2px; color:rgb(80,80,80); font-weight:bold; font-size:130%;}
+.contactform label.left {float:left; width:100px; margin:0 0 0 10px; padding:2px; font-size:110%;}
+.contactform select.combo {width:175px; padding:2px; border:solid 1px rgb(200,200,200); font-family:verdana,arial,sans-serif; font-size:110%;}
+.contactform input.field {width:275px; padding:2px; border:solid 1px rgb(200,200,200); font-family:verdana,arial,sans-serif; font-size:110%;}
+.contactform textarea {width:275px; padding:2px; border:solid 1px rgb(200,200,200); font-family:verdana,arial,sans-serif; font-size:110%;}
+.contactform input.button {float:right; width:9.0em; margin-right:20px; padding:1px !important /*Non-IE6*/; padding:0 /*IE6*/; background:rgb(230,230,230); border:solid 1px rgb(150,150,150); text-align:center; font-family:verdana,arial,sans-serif; color:rgb(150,150,150); font-size:110%;}
+.contactform input.button:hover {cursor: pointer; border:solid 1px rgb(80,80,80); background:rgb(220,220,220); color:rgb(80,80,80);}
+
+/* MAIN SUBCONTENT */
+.main-subcontent h1 {clear:both; margin:0 0 10px 0; padding:4px 10px 3px 10px; background-color:rgb(190,190,190); text-align:center; font-family:"trebuchet ms",arial,sans-serif; color:rgb(255,255,255); font-weight:bold; font-size:13px;}
+.main-subcontent h1.white {clear:both; margin:0 0 5px 0; padding:4px 10px 3px 10px; background-color:rgb(255,255,255); text-align:center; font-family:"trebuchet ms",verdana,arial,sans-serif; color:rgb(80,80,80); font-weight:bold; font-size:13px;}
+.main-subcontent h1.green {clear:both; margin:0 0 5px 0; padding:4px 10px 3px 10px; background-color:rgb(160,214,81); text-align:center; font-family:"trebuchet ms",verdana,arial,sans-serif; color:rgb(255,255,255); font-weight:bold; font-size:13px;}
+.main-subcontent h1.blue {clear:both; margin:0 0 5px 0; padding:4px 10px 3px 10px; background-color:rgb(137,170,214); text-align:center; font-family:"trebuchet ms",verdana,arial,sans-serif; color:rgb(255,255,255); font-weight:bold; font-size:140%;}
+.main-subcontent h1.orange {clear:both; margin:0 0 5px 0; padding:4px 10px 3px 10px; background-color:rgb(232,177,13); text-align:center; font-family:"trebuchet ms",verdana,arial,sans-serif; color:rgb(255,255,255); font-weight:bold; font-size:13px;}
+ /* Note: h2 non-existent, to make HTML-code interchangeable between 'main-navigation' and 'main-subcontent' */
+.main-subcontent h3 {clear:both; margin:1.0em 10px 0.5em 10px; color:rgb(80,80,80); font-weight:bold; font-size:110%;}
+.main-subcontent h4 {clear:both; margin:0 10px 1.0em 10px; color:rgb(0,0,0); line-height:1.2em; font-weight:normal; font-size:10px;}
+.main-subcontent p {clear:both; margin:0 10px 1.0em 10px; color:rgb(80,80,80); line-height:1.3em; font-size:110%;}
+.main-subcontent p.center {text-align:center;}
+.main-subcontent p.right {text-align:right;}
+.category a {clear:both; margin:0 2px 1.0em 5px; color:rgb(80,80,80); line-height:1.2em; font-size:11px;}
+
+
+.main-subcontent ul {list-style:none; margin:0.5em 10px 1.0em 10px;}
+.main-subcontent ul li {margin:5px 0 0.2em 2px; padding:0 0 0 11px; background:url(http://img-cdn.jg.jugem.jp/0ef/965253/20081012_316317.gif) no-repeat 0 0.4em; line-height:1.2em; font-size:110%;}
+.main-subcontent ol {margin:0.5em 10px 1.0em 30px !important /*Non-IE6*/; margin:0.5em 10px 1.0em 35px /*IE6*/;}
+.main-subcontent ol li {list-style-position:outside; margin:0 0 0.4em 0; font-size:110%;}
+
+.main-subcontent .loginform {width:160px; margin:0 10px 0 10px;}
+.main-subcontent .loginform p {clear:both; margin:0; padding:0;}
+.main-subcontent .loginform fieldset {width:160px; border:none;}
+.main-subcontent .loginform label.top {float:left; width:125px; margin:0 0 2px 0; font-size:110%;}
+.main-subcontent .loginform label.right {float:left; width:125px; margin:5px 0 0 0; padding:0 0 0 3px; /*IE6*/; font-size:110%;}
+.main-subcontent .loginform input.field {width:158px; margin:0 0 5px 0; padding:0.1em 0 0.2em 0 !important /*Non-IE6*/; padding:0.2em 0 0.3em 0 /*IE6*/; border:solid 1px rgb(200,200,200); font-family:verdana,arial,sans-serif; font-size:110%;}
+.main-subcontent .loginform input.checkbox {float:left; margin:5px 0 0 0 !important /*Non-IE6*/; margin:2px 0 0 -3px /*IE6*/; border:none;}
+.main-subcontent .loginform input.button {float:left; width:5.0em; margin:10px 0 5px 0; padding:1px; background:rgb(230,230,230); border:solid 1px rgb(150,150,150); text-align:center; font-family:verdana,arial,sans-serif; color:rgb(150,150,150); font-size:110%;}
+.main-subcontent .loginform input.button:hover {cursor:pointer; border:solid 1px rgb(80,80,80); background:rgb(220,220,220); color:rgb(80,80,80);}
+
+.main-subcontent .searchform {width:160px; margin:0 10px 0 10px;}
+.main-subcontent .searchform fieldset {border:none;}
+.main-subcontent .searchform input.field {float:left; width:158px; padding:0.1em 0 0.2em 0 !important /*Non-IE6*/; padding:0.2em 0 0.3em 0 /*IE6*/; border:1px solid rgb(200,200,200); font-family:verdana,arial,sans-serif; font-size:120%;}
+.main-subcontent .searchform input.button {float:left; width:3.0em; margin-top: 0.5em; padding:1px; background:rgb(230,230,230); border:solid 1px rgb(150,150,150); text-align:center; font-family:verdana,arial,sans-serif; color:rgb(150,150,150); font-size:120%;}
+.main-subcontent .searchform input.button:hover {cursor:pointer; border:solid 1px rgb(80,80,80); background:rgb(220,220,220); color:rgb(80,80,80);}
+
+/********************/
+/*  COMMON CLASSES  */
+/********************/
+
+.main a {color:rgb(10,84,170); font-weight:bold; text-decoration:underline;}
+.main-content h1 a {color:rgb(10,84,170); font-weight:normal; text-decoration:none;}
+.main a:visited {color:rgb(120,80,120);}
+.main a:hover {color:rgb(255,255,255); background:rgb(10,84,161); text-decoration:none;}
+
+
+
+
+
+/***************/
+/*  JUGEM ORG  */
+/***************/
+
+.calendar {font-family: "Verdana"; font-size: 10px; color: #666666; margin: 5px 0px 20px 0px;}
+.calendar_month {font-family: "Verdana"; margin-bottom: 10px; font-size: 10px; color: #666666;}
+.cell {width: 25px; height: 20px; padding: 0px; text-align:center; font-size: 10px; color: #666666;}
+
+#layout {margin: 0 auto; background: #fff; width: 920px; text-align: left;}
+#header {width: 920px; height: 200px; background: url(./template/hekomi/img/bg_head.gif) no-repeat;}
+#contents #center {float: left; width: 700px;}
+#contents #center .pad {padding : 0 20px;}
+#contents #right {float: right; margin-right: 10px; width: 180px;}
+#footer {margin-right: 10px; margin-left: 10px; clear: both;}
+.form_color {background: #ECECEC;}
+.site_title a {color: #fff; text-decoration: none;}
+.site_title a:link {color: #fff; text-decoration: none;}
+.site_title a:visited {color: #fff; text-decoration: none;}
+.site_title a:active {color: #fff; text-decoration: none;}
+.site_title a:hover {color: #fff; text-decoration: none;}
+.site_title {font-family: "£Í£Ó £ÐÌÀÄ«"; font-size: 50px; color: #fff; margin: 50px 0px 0px 110px; padding: 0px;}
+.description {font-size: 14px; color: #b6eaff; margin: 0px 0px 25px 110px;}
+.entry_navi {font-size: 12px; color: #666666; margin: 15px 0px 15px 0px; text-align: center;}
+.entry {margin: 0px; padding: 0px;}
+.entry_dates {font-size: 12px; text-align: right; color: #666666; background: #ffffff url(./template/hekomi/img/date_shadow.gif); padding-top: 5px; padding-right: 3px;}
+.entry_date {font-size: 12px; color: #666666;}
+.entry_title {height: 22px; font-size: 14px; font-weight: bolder; color: #ffffff; background: #0a54a1 url(./template/hekomi/img/title_back.gif) no-repeat; margin: 10px 0px 0px 0px; border-bottom: 2px solid #113691; padding-top: 8px; padding-left: 20px;}
+.entry_body {font-size: 12px; line-height: 170%; color: #2d2d2d; margin: 15px 0px 15px 0px;}
+.entry_author {font-size: 10px; color: #999999; margin: 5px 0px 5px 0px; text-align: right;}
+.entry_more {border-top: 1px solid #dcdcdc; font-size: 12px; line-height: 170%; color: #2d2d2d; padding-top: 5px; margin: 15px 0px 15px 0px;}
+.entry_state {font-size: 11px; color: #666666; margin: 15px 0px 30px 0px;}
+.comment-title {font-size: 14px;font-weight: bolder; color: #666666; margin: 10px 0px 10px 0px; padding-bottom: 3px; border-bottom: 1px dotted #CCCCCC;}
+.trackback-title {font-size: 14px; font-weight: bolder; color: #666666; margin: 10px 0px 10px 0px; padding-bottom: 3px; border-bottom: 1px dotted #CCCCCC;}
+.pict {border-width: 1px; border-style: solid; border-color: #999;}
+.page {font-size: 12px; color: #666666; padding: 10px 0px 0px 0px; border-top: 1px dotted #CCCCCC; text-align: center;}
+.searchtitle {font-family: "Verdana"; font-size: 12px; font-weight: bolder; color: #fff; line-height: 170%; margin: 0px 0px 0px 0px;}
+.linktitle {font-family: Verdana; font-size: 12px; font-weight: bolder; line-height: 170%; color: #666666; margin: 10px 0px 0px 0px;}
+.linktext {font-size: 11px; color: #999999; line-height: 170%; margin: 5px 0px 25px 0px;}
+.linktext_s {font-size: 10px; color: #999999; line-height: 150%; margin: 5px 0px 25px 0px;}
+.profimg {border-width: 1px; border-color: #000000; border-style: solid;}
+.search {font-size: 10px; color: #333333; line-height: 170%; margin: 0px 0px 5px 0px;}
+.button {margin: 5px 0px 0px 0px;}
+.copyright {font-size: 10px; color: #333333; line-height: 170%; border-top: 1px dotted #CCCCCC; margin: 30px 0px 0px 0px; padding-top: 10px;}
+.jugem_bana {margin: 20px 1px 10px 0px;}
